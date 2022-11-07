@@ -4,15 +4,15 @@
 Zajela in analizirala bom podatke o ponudbah nakupa hiše v Sloveniji. Dobila jih bom s spletne strani [nepremicnine.net](https://www.nepremicnine.net/oglasi-prodaja/hisa/). 
 
 Za vsako hišo bom zajela:
-* lokacijo
-* leto izgradnje
+* regija
+* občina
+* leto izgradnje oz. adaptacije
 * površino hiše
-* površino zemljišča
 * ceno
 * način izgradnje
 
 Delovne hipoteze:
 * Ali vpliva leto izgradnje na ceno?
 * Je v Ljubljani cena hiš veliko večja?
-* Za katere lokacije je bolj značilna gradnja dvojčkov in hiš z večjimi vrtovi?
+* Za katere regije je bolj značilna gradnja dvojčkov in večjih hiš?
 * Se lahko opazi kakšen trend kakšne hiše so bile grajene glede na leto izgradnje?
