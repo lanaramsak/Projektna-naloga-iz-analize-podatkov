@@ -136,16 +136,6 @@ def ureditev_podatkov(slovar):
     return slovar
 
 
-
-#st_oddelkov = 108
-#zajem_spletne_strani(st_oddelkov)            
-#zajem_oglasov(st_oddelkov)
-#preveri_zajem_oglasov(st_oddelkov)
-
-# orodja.shrani_spletno_stran("https://www.nepremicnine.net/oglasi-prodaja/leskovec-pri-pragerskem-hisa_6496516/", "poskus")
-# vsebina = orodja.vsebina_datoteke("poskus")
-# zajem_podatkov(vsebina)
-
 st_oddelkov = 108
 hise = zajem_oglasov(st_oddelkov)
 with open("hise.json", "w") as dat:
