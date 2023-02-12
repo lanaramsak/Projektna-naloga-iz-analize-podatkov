@@ -81,8 +81,9 @@ def zajem_oglasov(st_oddelkov):
             id_hise = url[0][-8:-1]
             hisa = orodja.vsebina_datoteke(datoteka)
             slovar_oglas = zajem_podatkov(hisa)
-            slovar_oglas["id"] = int(id_hise)
-            hise.append(slovar_oglas)
+            if slovar_oglas["povrsina"] != 0:
+                slovar_oglas["id"] = int(id_hise)
+                hise.append(slovar_oglas)
     return hise
 
 #nekateri oglasi nimajo podanega leta
@@ -108,33 +109,30 @@ def zajem_podatkov(stran):
     if leto_gradnje:
         slovar["leto_gradnje"] = leto_gradnje["leto"]
     else:
-        slovar["leto_gradnje"] = None
+        slovar["leto_gradnje"] = 0
     leto_adaptacije = vzorec_leto_adaptacija.search(besedilo)
     if leto_adaptacije:
         slovar["leto_adaptacije"] = leto_adaptacije["leto"]
     else:
-        slovar["leto_adaptacije"] = None
+        slovar["leto_adaptacije"] = 0
 
     najdeno = vzorec_oglasa_podatki.search(besedilo)
     slovar_podatki = najdeno.groupdict()
     slovar.update(slovar_podatki)    
-    print(slovar)
     urejen_slovar = ureditev_podatkov(slovar)
-    print(urejen_slovar)
     return urejen_slovar
 
 def ureditev_podatkov(slovar):
     slovar["cena"] = float(slovar["cena"].replace(".", "").replace(",", "."))
-    if slovar["leto_gradnje"] != None:
+    if slovar["leto_gradnje"] != 0:
         slovar["leto_gradnje"] = int(slovar["leto_gradnje"])
-    if slovar["leto_adaptacije"] != None:
+    if slovar["leto_adaptacije"] != 0:
         slovar["leto_adaptacije"] = int(slovar["leto_adaptacije"])
     slovar["povrsina"] = float(slovar["povrsina"].replace(".", "").replace(",", "."))
     if slovar["enota"] != None:
         slovar["cena"] = slovar["povrsina"] * slovar["cena"]
     slovar.pop("enota")
     return slovar
-
 
 st_oddelkov = 108
 hise = zajem_oglasov(st_oddelkov)
